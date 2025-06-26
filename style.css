@@ -34,14 +34,30 @@ body {
 .paper.image {
   padding: 10px;
 }
+
 .paper.image p {
   font-size: 30px;
 }
 
-img {
-  max-height: 200px;
-  width: 100%;
+/* UPDATED: Image styles */
+.paper.image img {
+  width: 180px;        /* Smaller image width */
+  max-width: 80%;      /* Limit size on smaller screens */
+  height: auto;        /* Maintain aspect ratio */
+  margin-left: 30px;   /* Left margin */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  border-radius: 10px; /* Optional: rounded edges */
   user-select: none;
+}
+
+/* Responsive tweak for small screens */
+@media (max-width: 500px) {
+  .paper.image img {
+    width: 150px;
+    margin-left: 20px;
+  }
 }
 
 .paper.heart::after {
