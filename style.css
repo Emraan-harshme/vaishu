@@ -15,12 +15,16 @@ body {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
   background-position: center center;
-  padding: 40px 40px;
+  padding: 30px;
   transform: rotateZ(-5deg);
   box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
   position: absolute;
-  min-height: 500px;      /* 👈 bigger height */
+  min-height: 600px;     /* ✅ Same height for all */
+  width: 400px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ✅ Space out content */
   user-select: none;
   touch-action: none;
 }
@@ -34,32 +38,37 @@ body {
 }
 
 .paper.image {
-  padding: 40px 30px;
+  padding: 30px;
 }
 
 .paper.image p {
   font-size: 30px;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .paper.image img {
   width: 100px;
   height: auto;
   margin-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: block;
+  margin-top: 20px;
+  align-self: center;   /* ✅ Center image horizontally */
   border-radius: 8px;
   user-select: none;
 }
 
 @media (max-width: 500px) {
+  .paper {
+    width: 90%;
+    min-height: 500px;
+  }
+
   .paper.image img {
     width: 90px;
-    margin-left: 15px;
+    margin-left: 0;
   }
 }
 
-/* Bigger font for special message */
 .big {
   font-size: 42px;
   font-weight: bold;
@@ -101,7 +110,7 @@ p {
   user-select: none;
 }
 
-/* Make last page taller to hide anything under it */
+/* Last page (Drag...) also same size */
 .paper:last-child {
-  min-height: 350px;
+  min-height: 600px;
 }
