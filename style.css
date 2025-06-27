@@ -9,22 +9,24 @@ body {
   background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
   background-position: center center;
   touch-action: manipulation;
+  overflow: hidden;
 }
 
 .paper {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
   background-position: center center;
-  padding: 30px;
+  padding: 30px 30px;
   transform: rotateZ(-5deg);
   box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
   position: absolute;
-  min-height: 600px;     /* ✅ Same height for all */
+  height: 600px;                      /* ✅ Fixed height */
   width: 400px;
-  overflow: hidden;
-  display: flex;
+  display: flex;                      /* ✅ Flex layout */
   flex-direction: column;
-  justify-content: space-between; /* ✅ Space out content */
+  justify-content: space-between;    /* ✅ Space between text and image */
+  align-items: center;
+  overflow: hidden;
   user-select: none;
   touch-action: none;
 }
@@ -37,40 +39,34 @@ body {
   border-radius: 50%;
 }
 
-.paper.image {
-  padding: 30px;
-}
-
 .paper.image p {
-  font-size: 30px;
-  line-height: 1.4;
+  font-size: 28px;
   text-align: center;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
 
 .paper.image img {
   width: 100px;
   height: auto;
-  margin-left: 20px;
-  margin-top: 20px;
-  align-self: center;   /* ✅ Center image horizontally */
   border-radius: 8px;
+  margin-top: 20px;
   user-select: none;
 }
 
 @media (max-width: 500px) {
   .paper {
     width: 90%;
-    min-height: 500px;
+    height: 500px;
   }
 
   .paper.image img {
     width: 90px;
-    margin-left: 0;
   }
 }
 
 .big {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: bold;
   text-align: center;
   color: #cc0033;
@@ -100,6 +96,7 @@ body {
   color: rgb(0,0,100);
   opacity: 0.75;
   user-select: none;
+  text-align: center;
 }
 
 p {
@@ -108,9 +105,5 @@ p {
   color: rgb(0,0,100);
   opacity: 0.75;
   user-select: none;
-}
-
-/* Last page (Drag...) also same size */
-.paper:last-child {
-  min-height: 600px;
+  text-align: center;
 }
