@@ -1,82 +1,35 @@
-let highestZ = 1;
+const papers = document.querySelectorAll('.paper');
 
-class Paper {
-  holdingPaper = false;
-  startX = 0;
-  startY = 0;
-  moveX = 0;
-  moveY = 0;
-  prevX = 0;
-  prevY = 0;
-  velX = 0;
-  velY = 0;
-  rotation = Math.random() * 30 - 15;
-  currentX = 0;
-  currentY = 0;
-  rotating = false;
+papers.forEach((paper, index) => {
+  paper.style.zIndex = index + 1;
 
-  constructor(paper) {
-    this.paper = paper;
-    this.init();
-  }
+  // Random position
+  paper.style.top = `${Math.random() * window.innerHeight * 0.5}px`;
+  paper.style.left = `${Math.random() * window.innerWidth * 0.5}px`;
 
-  init() {
-    // Mouse Events
-    this.paper.addEventListener('mousedown', (e) => this.handleStart(e.clientX, e.clientY));
-    document.addEventListener('mousemove', (e) => this.handleMove(e.clientX, e.clientY));
-    window.addEventListener('mouseup', () => this.handleEnd());
+  paper.addEventListener('mousedown', function(e) {
+    let shiftX = e.clientX - paper.getBoundingClientRect().left;
+    let shiftY = e.clientY - paper.getBoundingClientRect().top;
 
-    // Touch Events
-    this.paper.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      this.handleStart(e.touches[0].clientX, e.touches[0].clientY);
-    });
-    document.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      this.handleMove(e.touches[0].clientX, e.touches[0].clientY);
-    }, { passive: false });
-    window.addEventListener('touchend', () => this.handleEnd());
-  }
+    // Bring to front on click
+    paper.style.zIndex = parseInt(paper.style.zIndex) + 1000;
 
-  handleStart(x, y) {
-    if (this.holdingPaper) return;
-    this.holdingPaper = true;
-    this.paper.style.zIndex = highestZ++;
-    this.startX = x;
-    this.startY = y;
-    this.prevX = x;
-    this.prevY = y;
-  }
+    function moveAt(pageX, pageY) {
+      paper.style.left = pageX - shiftX + 'px';
+      paper.style.top = pageY - shiftY + 'px';
+    }
 
-  handleMove(x, y) {
-    if (!this.holdingPaper) return;
-    
-    this.velX = x - this.prevX;
-    this.velY = y - this.prevY;
-    this.prevX = x;
-    this.prevY = y;
+    function onMouseMove(e) {
+      moveAt(e.pageX, e.pageY);
+    }
 
-    this.currentX += this.velX;
-    this.currentY += this.velY;
+    document.addEventListener('mousemove', onMouseMove);
 
-    // Rotation logic (optional)
-    const dx = x - this.startX;
-    const dy = y - this.startY;
-    this.rotation = Math.atan2(dy, dx) * (180 / Math.PI);
+    paper.onmouseup = function () {
+      document.removeEventListener('mousemove', onMouseMove);
+      paper.onmouseup = null;
+    };
+  });
 
-    this.paper.style.transform = `
-      translateX(${this.currentX}px)
-      translateY(${this.currentY}px)
-      rotateZ(${this.rotation}deg)
-    `;
-  }
-
-  handleEnd() {
-    this.holdingPaper = false;
-  }
-}
-
-// Initialize all papers
-document.querySelectorAll('.paper').forEach(paper => {
-  new Paper(paper);
+  paper.ondragstart = () => false;
 });
