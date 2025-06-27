@@ -5,10 +5,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: 1000px;
   background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
+  background-size: 1000px;
   background-position: center center;
-  touch-action: manipulation; /* Better touch control */
+  touch-action: manipulation;
 }
 
 .paper {
@@ -19,8 +19,8 @@ body {
   transform: rotateZ(-5deg);
   box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
   position: absolute;
-  touch-action: none; /* Disable browser touch actions */
-  user-select: none;  /* Prevent text selection */
+  touch-action: none;
+  user-select: none;
 }
 
 .paper.heart {
@@ -29,34 +29,6 @@ body {
   height: 200px;
   padding: 0;
   border-radius: 50%;
-}
-
-.paper.image {
-  padding: 10px;
-}
-
-.paper.image p {
-  font-size: 30px;
-}
-
-/* ✅ Passport-size Image with margin */
-.paper.image img {
-  width: 100px;        /* Passport-size width */
-  height: auto;        /* Maintain aspect ratio */
-  margin-left: 20px;   /* Shift image to right */
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: block;
-  border-radius: 8px;  /* Slight round edges */
-  user-select: none;
-}
-
-/* ✅ Optional: For very small screens */
-@media (max-width: 500px) {
-  .paper.image img {
-    width: 90px;
-    margin-left: 15px;
-  }
 }
 
 .paper.heart::after {
@@ -73,10 +45,38 @@ body {
   opacity: 0.6;
 }
 
+.paper.image {
+  padding: 10px;
+}
+
+.paper.image p {
+  font-size: 30px;
+}
+
+.paper.image img {
+  width: 100px;
+  height: auto;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  border-radius: 8px;
+  user-select: none;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3); /* Optional: visual polish */
+}
+
+/* Responsive tweak */
+@media (max-width: 500px) {
+  .paper.image img {
+    width: 90px;
+    margin-left: 15px;
+  }
+}
+
 p {
-  font-family: 'Zeyada';
+  font-family: 'Zeyada', cursive;
   font-size: 50px;
-  color: rgb(0,0,100);
+  color: rgb(0, 0, 100);
   opacity: 0.75;
   user-select: none;
 }
