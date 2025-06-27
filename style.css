@@ -5,10 +5,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
   background-size: 1000px;
+  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
   background-position: center center;
   touch-action: manipulation;
+  overflow: hidden;
 }
 
 .paper {
@@ -17,7 +18,7 @@ body {
   background-position: center center;
   padding: 20px 100px;
   transform: rotateZ(-5deg);
-  box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
+  box-shadow: 1px 15px 20px 0px rgba(0, 0, 0, 0.5);
   position: absolute;
   touch-action: none;
   user-select: none;
@@ -53,22 +54,25 @@ body {
   font-size: 30px;
 }
 
+/* ✅ Clean, non-stretched passport-style image */
 .paper.image img {
-  width: 100px;
+  max-width: 100px;
   height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
   display: block;
   border-radius: 8px;
   user-select: none;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.3); /* Optional: visual polish */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive tweak */
+/* ✅ Responsive tweaks for smaller screens */
 @media (max-width: 500px) {
   .paper.image img {
-    width: 90px;
+    max-width: 90px;
     margin-left: 15px;
   }
 }
