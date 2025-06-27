@@ -47,10 +47,10 @@ body {
   line-height: 1.3;
 }
 
-/* Passport size photo styling */
+/* Square Passport Photos */
 .passport-photo {
   width: 100px;
-  height: 130px;
+  height: 100px;
   object-fit: cover;
   border: 3px solid white;
   border-radius: 5px;
@@ -108,6 +108,6 @@ p {
   
   .passport-photo {
     width: 80px;
-    height: 104px;
+    height: 80px;
   }
 }
