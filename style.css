@@ -8,19 +8,21 @@ body {
   background-size: 1000px;
   background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
   background-position: center center;
-  touch-action: manipulation; /* Better touch control */
+  touch-action: manipulation;
 }
 
 .paper {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
   background-position: center center;
-  padding: 20px 100px;
+  padding: 40px 40px;
   transform: rotateZ(-5deg);
   box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
   position: absolute;
-  touch-action: none; /* Disable browser touch actions */
-  user-select: none;  /* Prevent text selection */
+  min-height: 500px;      /* 👈 bigger height */
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
 }
 
 .paper.heart {
@@ -32,31 +34,37 @@ body {
 }
 
 .paper.image {
-  padding: 10px;
+  padding: 40px 30px;
 }
 
 .paper.image p {
   font-size: 30px;
 }
 
-/* ✅ Passport-size Image with margin */
 .paper.image img {
-  width: 100px;        /* Passport-size width */
-  height: auto;        /* Maintain aspect ratio */
-  margin-left: 20px;   /* Shift image to right */
+  width: 100px;
+  height: auto;
+  margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
   display: block;
-  border-radius: 8px;  /* Slight round edges */
+  border-radius: 8px;
   user-select: none;
 }
 
-/* ✅ Optional: For very small screens */
 @media (max-width: 500px) {
   .paper.image img {
     width: 90px;
     margin-left: 15px;
   }
+}
+
+/* Bigger font for special message */
+.big {
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  color: #cc0033;
 }
 
 .paper.heart::after {
@@ -73,10 +81,27 @@ body {
   opacity: 0.6;
 }
 
+.paper.red {
+  background-color: #f8d7da;
+}
+
+.p1, .p2 {
+  font-family: 'Zeyada';
+  font-size: 50px;
+  color: rgb(0,0,100);
+  opacity: 0.75;
+  user-select: none;
+}
+
 p {
   font-family: 'Zeyada';
   font-size: 50px;
   color: rgb(0,0,100);
   opacity: 0.75;
   user-select: none;
+}
+
+/* Make last page taller to hide anything under it */
+.paper:last-child {
+  min-height: 350px;
 }
