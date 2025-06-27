@@ -8,27 +8,19 @@ body {
   background-size: 1000px;
   background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
   background-position: center center;
-  touch-action: manipulation;
-  overflow: hidden;
+  touch-action: manipulation; /* Better touch control */
 }
 
 .paper {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
   background-position: center center;
-  padding: 30px 30px;
+  padding: 20px 100px;
   transform: rotateZ(-5deg);
   box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
   position: absolute;
-  height: 600px;                      /* ✅ Fixed height */
-  width: 400px;
-  display: flex;                      /* ✅ Flex layout */
-  flex-direction: column;
-  justify-content: space-between;    /* ✅ Space between text and image */
-  align-items: center;
-  overflow: hidden;
-  user-select: none;
-  touch-action: none;
+  touch-action: none; /* Disable browser touch actions */
+  user-select: none;  /* Prevent text selection */
 }
 
 .paper.heart {
@@ -39,37 +31,32 @@ body {
   border-radius: 50%;
 }
 
-.paper.image p {
-  font-size: 28px;
-  text-align: center;
-  line-height: 1.4;
-  margin-bottom: 10px;
+.paper.image {
+  padding: 10px;
 }
 
+.paper.image p {
+  font-size: 30px;
+}
+
+/* ✅ Passport-size Image with margin */
 .paper.image img {
-  width: 100px;
-  height: auto;
-  border-radius: 8px;
-  margin-top: 20px;
+  width: 100px;        /* Passport-size width */
+  height: auto;        /* Maintain aspect ratio */
+  margin-left: 20px;   /* Shift image to right */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  border-radius: 8px;  /* Slight round edges */
   user-select: none;
 }
 
+/* ✅ Optional: For very small screens */
 @media (max-width: 500px) {
-  .paper {
-    width: 90%;
-    height: 500px;
-  }
-
   .paper.image img {
     width: 90px;
+    margin-left: 15px;
   }
-}
-
-.big {
-  font-size: 40px;
-  font-weight: bold;
-  text-align: center;
-  color: #cc0033;
 }
 
 .paper.heart::after {
@@ -86,24 +73,10 @@ body {
   opacity: 0.6;
 }
 
-.paper.red {
-  background-color: #f8d7da;
-}
-
-.p1, .p2 {
-  font-family: 'Zeyada';
-  font-size: 50px;
-  color: rgb(0,0,100);
-  opacity: 0.75;
-  user-select: none;
-  text-align: center;
-}
-
 p {
   font-family: 'Zeyada';
   font-size: 50px;
   color: rgb(0,0,100);
   opacity: 0.75;
   user-select: none;
-  text-align: center;
 }
