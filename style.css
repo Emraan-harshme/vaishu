@@ -1,6 +1,6 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
+/* Base Styles */
 body {
   height: 100vh;
   display: flex;
@@ -15,6 +15,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Paper Styles */
 .paper {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
@@ -27,17 +28,9 @@ body {
   user-select: none;
   max-width: 80%;
   margin: 10px;
-  opacity: 0;
-  animation: fadeSlide 1s ease forwards;
 }
 
-@keyframes fadeSlide {
-  to {
-    opacity: 1;
-    transform: rotateZ(-5deg);
-  }
-}
-
+/* Heart Paper */
 .paper.heart {
   position: relative;
   width: 200px;
@@ -46,6 +39,7 @@ body {
   border-radius: 50%;
 }
 
+/* Image Papers */
 .paper.image {
   padding: 15px 20px;
   text-align: center;
@@ -58,6 +52,7 @@ body {
   line-height: 1.4;
 }
 
+/* Passport Photos - Square (100x100) */
 .passport-photo {
   width: 100px;
   height: 100px;
@@ -70,10 +65,12 @@ body {
   display: block;
 }
 
+/* Special class for landscape photos */
 .passport-photo.landscape {
-  object-position: center 30%;
+  object-position: center 30%; /* Better face positioning */
 }
 
+/* Heart Background */
 .paper.heart::after {
   content: "";
   background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
@@ -88,6 +85,7 @@ body {
   opacity: 0.6;
 }
 
+/* Text Styles */
 p {
   font-family: 'Zeyada';
   font-size: 34px;
@@ -98,27 +96,17 @@ p {
   text-align: center;
 }
 
+/* Red Paper */
 .paper.red {
   background-color: rgba(255, 200, 200, 0.3);
-  animation: heartbeat 1.5s infinite;
 }
 
-@keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  14%, 42% {
-    transform: scale(1.05);
-  }
-  28%, 70% {
-    transform: scale(1);
-  }
-}
-
+/* Paragraph Styles */
 .p1, .p2 {
   margin: 6px 0;
 }
 
+/* Mobile Responsiveness */
 @media (max-width: 600px) {
   .paper {
     padding: 15px;
