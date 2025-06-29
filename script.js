@@ -1,3 +1,4 @@
+
 let highestZ = 1;
 
 class Paper {
@@ -21,12 +22,10 @@ class Paper {
   }
 
   init() {
-    // Mouse Events
     this.paper.addEventListener('mousedown', (e) => this.handleStart(e.clientX, e.clientY));
     document.addEventListener('mousemove', (e) => this.handleMove(e.clientX, e.clientY));
     window.addEventListener('mouseup', () => this.handleEnd());
 
-    // Touch Events
     this.paper.addEventListener('touchstart', (e) => {
       e.preventDefault();
       this.handleStart(e.touches[0].clientX, e.touches[0].clientY);
@@ -36,6 +35,17 @@ class Paper {
       this.handleMove(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: false });
     window.addEventListener('touchend', () => this.handleEnd());
+
+    // Double click to reset position
+    this.paper.addEventListener('dblclick', () => {
+      this.currentX = 0;
+      this.currentY = 0;
+      this.paper.style.transition = 'transform 0.4s ease';
+      this.paper.style.transform = `translate(0, 0) rotateZ(0deg)`;
+      setTimeout(() => {
+        this.paper.style.transition = '';
+      }, 400);
+    });
   }
 
   handleStart(x, y) {
@@ -46,6 +56,7 @@ class Paper {
     this.startY = y;
     this.prevX = x;
     this.prevY = y;
+    this.paper.style.transition = 'transform 0.05s ease-out';
   }
 
   handleMove(x, y) {
@@ -59,7 +70,6 @@ class Paper {
     this.currentX += this.velX;
     this.currentY += this.velY;
 
-    // Rotation logic (optional)
     const dx = x - this.startX;
     const dy = y - this.startY;
     this.rotation = Math.atan2(dy, dx) * (180 / Math.PI);
@@ -76,7 +86,6 @@ class Paper {
   }
 }
 
-// Initialize all papers
 document.querySelectorAll('.paper').forEach(paper => {
   new Paper(paper);
 });
