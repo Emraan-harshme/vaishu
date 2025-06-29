@@ -1,3 +1,4 @@
+
 let highestZ = 1;
 
 class Paper {
@@ -6,8 +7,6 @@ class Paper {
   touchStartY = 0;
   touchMoveX = 0;
   touchMoveY = 0;
-  touchEndX = 0;
-  touchEndY = 0;
   prevTouchX = 0;
   prevTouchY = 0;
   velX = 0;
@@ -51,39 +50,36 @@ class Paper {
 
         paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
       }
-    })
+    });
 
     paper.addEventListener('touchstart', (e) => {
       if(this.holdingPaper) return; 
       this.holdingPaper = true;
       
-      paper.style.zIndex = highestZ;
-      highestZ += 1;
-      
+      paper.style.zIndex = highestZ++;
       this.touchStartX = e.touches[0].clientX;
       this.touchStartY = e.touches[0].clientY;
       this.prevTouchX = this.touchStartX;
       this.prevTouchY = this.touchStartY;
     });
+
     paper.addEventListener('touchend', () => {
       this.holdingPaper = false;
       this.rotating = false;
     });
 
-    // For two-finger rotation on touch screens
     paper.addEventListener('gesturestart', (e) => {
       e.preventDefault();
       this.rotating = true;
     });
+
     paper.addEventListener('gestureend', () => {
       this.rotating = false;
     });
   }
 }
 
-const papers = Array.from(document.querySelectorAll('.paper'));
-
-papers.forEach(paper => {
+document.querySelectorAll('.paper').forEach(paper => {
   const p = new Paper();
   p.init(paper);
 });
