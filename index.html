@@ -2,62 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Vaishu ❤️</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack&family=Homemade+Apple&display=swap">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <audio id="bg-music" autoplay loop>
-    <source src="https://dl.sndup.net/5km2/Raabta%20Reprise%20-%20Arijit%20Singh.mp3" type="audio/mpeg">
-  </audio>
+<div class="paper heart"></div>
 
-  <audio id="ending-music">
-    <source src="https://dl.sndup.net/37qs/Tum%20Hi%20Ho%20-%20Aashiqui%202.mp3" type="audio/mpeg">
-  </audio>
+<!-- Note 1 -->
+<div class="paper image">
+  <p>Yeh hum ho sakte the...</p>
+  <p>...agar aap bhi mujhse thoda sa pyaar karti 🥺</p>
+  <p>Kya itna bhi mushkil hai?</p>
+  <p>😔🥹</p>
+  <img src="ye.png" class="passport-photo" />
+</div>
 
-  <button id="play-music">Play ❤️</button>
+<!-- Note 2 -->
+<div class="paper image">
+  <p>Main kabhi zabardasti nahi karunga</p>
+  <p>Jo cheez dil se na ho, usme asli feeling nahi hoti</p>
+  <p>Pyaar bina pressure ke hi achha lagta hai</p>
+  <p>varna sirf ek formal si baat reh jaati hai</p>
+  <img src="8.png" class="passport-photo" />
+</div>
 
-  <div class="hearts-container"></div>
+<!-- Note 3 -->
+<div class="paper image">
+  <p>And I’ve fallen</p>
+  <p>in love with you 😍</p>
+  <p>Bas itna chahunga ki thoda samjho mujhe</p>
+  <p>kyunki meri feelings real hain</p>
+  <img src="1.jpeg" class="passport-photo" />
+</div>
 
-  <div class="envelope" onclick="openEnvelope()">
-    <div class="lid"></div>
-    <div class="letter">Click to Open 💌</div>
-  </div>
+<!-- Note 4 -->
+<div class="paper image">
+  <p>Thodi si toh khwahishein hoti hain sabki</p>
+  <p>Ek chhoti si effort bhi kaafi hoti hai</p>
+  <p>Agar samajh ho dono taraf</p>
+  <p>toh sab kuch easy lagta hai</p>
+  <img src="2.jpeg" class="passport-photo landscape" />
+</div>
 
-  <div class="content-area hidden">
-    <div class="paper">Hi Vaishu! 🥰<br>This is just for you!</div>
-    <div class="paper red">You make everything better ❤️</div>
-    <div class="paper image"><p>Your smile 😍</p><img src="3.jpg" class="passport-photo" /></div>
-    <div class="paper" onclick="playEndingSong()">Click here for surprise 💖</div>
-  </div>
+<!-- Note 5 -->
+<div class="paper image">
+  <p>Tum itni cute kaise ho?</p>
+  <p>Ek baar dekha, dil gaya 😍</p>
+  <p>Tumhari har ek ada pe pyaar aata hai</p>
+  <p>Just too adorable!</p>
+  <img src="3.jpg" class="passport-photo landscape" />
+</div>
 
-  <script>
-    function openEnvelope() {
-      document.querySelector('.envelope').style.display = 'none';
-      document.querySelector('.content-area').classList.remove('hidden');
-    }
+<!-- Note 6 -->
+<div class="paper red">
+  <p class="p1">You are my favourite</p>
+  <p class="p2">Person in the whole universe 😍</p>
+  <img src="8.png" class="passport-photo" />
+</div>
 
-    document.getElementById('play-music').addEventListener('click', () => {
-      document.getElementById('bg-music').play();
-      document.getElementById('play-music').style.display = 'none';
-    });
+<!-- Note 7 -->
+<div class="paper">
+  <p class="p1">I want you to read</p>
+  <p class="p1">first three words of this page</p>
+  <p class="p1">❤️</p>
+</div>
 
-    function playEndingSong() {
-      document.getElementById('bg-music').pause();
-      document.getElementById('ending-music').play();
-    }
+<!-- Instruction -->
+<div class="paper">
+  <p class="p1">Drag the papers to move!</p>
+</div>
 
-    const container = document.querySelector('.hearts-container');
-    setInterval(() => {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerText = '❤️';
-      heart.style.left = Math.random() * 100 + 'vw';
-      container.appendChild(heart);
-      setTimeout(() => heart.remove(), 4000);
-    }, 500);
-  </script>
+<script src="./script.js"></script>
 </body>
 </html>
