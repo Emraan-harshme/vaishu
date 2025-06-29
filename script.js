@@ -79,4 +79,4 @@ class Paper {
 // Initialize all papers
 document.querySelectorAll('.paper').forEach(paper => {
   new Paper(paper);
-}); - script.js
+});
